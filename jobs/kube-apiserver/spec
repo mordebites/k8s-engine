@@ -28,6 +28,8 @@ properties:
     description: The admin username for the Kubernetes cluster
   admin-password:
     description: The password for the admin account
+  admission_controllers:
+    description: list of admission controllers to enable
   allow_privileged:
     description: Allows privileged containers for the Kubernetes cluster
     default: false

@@ -10,20 +10,6 @@
   end
 
   etcd_endpoints = link('etcd').instances.map { |server| get_url(server, 2379) }.join(",")
-
-  admission_control_options = [
-    "LimitRanger",
-    "DefaultTolerationSeconds", "ValidatingAdmissionWebhook",
-    "NamespaceLifecycle","ResourceQuota","ServiceAccount",
-    "DefaultStorageClass", "MutatingAdmissionWebhook"]
-
-  if p('deny_escalating_exec')
-    admission_control_options.push("DenyEscalatingExec")
-  end
-
-  if !p('allow_privileged')
-    admission_control_options.push("SecurityContextDeny")
-  end
 %>
 processes:
 - name: kube-apiserver
@@ -39,7 +25,7 @@ processes:
   <% end %>
   - --kubelet-client-key=/var/vcap/jobs/kube-apiserver/config/kubelet-client-key.pem
   - --kubelet-client-certificate=/var/vcap/jobs/kube-apiserver/config/kubelet-client-cert.pem
-  - --enable-admission-plugins=<%= admission_control_options.join(",") %>
+  - --enable-admission-plugins=<%= p('admission_controllers') %>
   - --disable-admission-plugins=PersistentVolumeLabel
   - --enable-bootstrap-token-auth
   - --enable-swagger-ui
