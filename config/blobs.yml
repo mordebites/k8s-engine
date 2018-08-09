@@ -6,14 +6,6 @@ cni/util-linux_2.27.1-6ubuntu3_amd64.deb:
   size: 847730
   object_id: 27eb3ec3-220f-4a25-6c4f-ec219c37ac8d
   sha: 568f62cb031608ab09ba1e3c2121e9e8b92dcae4
-etcdctl-3.0.7:
-  size: 18427584
-  object_id: 32221476-5c3d-4ec7-5869-44c989cc3077
-  sha: 11f0462cc86bf85332399a2fa584d5bb46d0cb2a
-jq-linux64-1.5:
-  size: 3027945
-  object_id: 41eb1cd1-0377-4e08-5602-51e0af8b9b52
-  sha: d8e36831c3c94bb58be34dd544f44a6c6cb88568
 kubernetes-1.11.1/kube-apiserver:
   size: 185513080
   object_id: 8ac44688-5107-4991-627e-589ae37fba11
