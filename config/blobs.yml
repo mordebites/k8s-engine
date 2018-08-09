@@ -6,66 +6,10 @@ cni/util-linux_2.27.1-6ubuntu3_amd64.deb:
   size: 847730
   object_id: 27eb3ec3-220f-4a25-6c4f-ec219c37ac8d
   sha: 568f62cb031608ab09ba1e3c2121e9e8b92dcae4
-conntrack/conntrack_1.4.1-1.deb:
-  size: 25112
-  object_id: 9bf859c2-93aa-48b0-69f9-5903f0b4acbe
-  sha: 494df11d77a1dd31fbc1e0e8c7946957ef5a74af
-conntrack/libmnl0_1.0.3-3.deb:
-  size: 11416
-  object_id: 245e085f-1ad2-447d-67bb-1894b960c571
-  sha: dcb0b572f1207ad192d8cb1a9010fc6dd22d0000
-conntrack/libnetfilter-conntrack3_1.0.4-1.deb:
-  size: 45872
-  object_id: 42a59368-8ae3-4502-480b-56ecd3f40f7a
-  sha: 743b497bd6a6491a8cad11c04103e55c7a9cc93c
-container-images/k8s.gcr.io_heapster-amd64:v1.5.4.tgz:
-  size: 19797457
-  object_id: deb55944-5460-4af5-6b0f-552330fca196
-  sha: 3bf25f122517c10287f3074840c8a3fe66edd499
-container-images/k8s.gcr.io_heapster-influxdb-amd64:v1.3.3.tgz:
-  size: 4751608
-  object_id: 93e1221a-e955-4d68-562b-0d47dbbb06ea
-  sha: 1b2e197e0cccd7c0b7fb2f7ee791b9bc52d0654b
-container-images/k8s.gcr.io_k8s-dns-dnsmasq-nanny-amd64:1.14.10.tgz:
-  size: 10980438
-  object_id: 7eb4cfb4-d834-4e86-5660-b59c5aa5144c
-  sha: c87f66f8332c5cf5d78441458ef323c2599c0b96
-container-images/k8s.gcr.io_k8s-dns-kube-dns-amd64:1.14.10.tgz:
-  size: 13175585
-  object_id: 6d36c105-d8f0-45df-61ea-1032c875f77a
-  sha: b7b2f482b0c7d92fd8a3ec875af37ae17c1f6bda
-container-images/k8s.gcr.io_k8s-dns-sidecar-amd64:1.14.10.tgz:
-  size: 11294008
-  object_id: bbb7dfd6-6ddb-473d-5b78-d75c1fc709a9
-  sha: 2197e413d8f22419e01924485c99c0d744a140e7
-container-images/k8s.gcr.io_kubernetes-dashboard-amd64:v1.8.3.tgz:
-  size: 37223437
-  object_id: a6b0aa27-cc63-4207-69dc-8c9a0cba5907
-  sha: a6b943402efcd0a9cdbcdce40bf43f5e299c0156
-container-images/k8s.gcr.io_pause-amd64:3.1.tgz:
-  size: 315595
-  object_id: 3d40e826-441f-4fa8-5f46-5407e476e7e3
-  sha: 00a7361bccb801c10803089aab620cf8ba2c84ec
-container-images/nginx:1.13-alpine.tgz:
-  size: 7633579
-  object_id: e23764f0-27cf-49fe-7cc3-04d3b90b2cca
-  sha: 16b664282f0010b441587dd3c0d2d3587661ab31
 etcdctl-3.0.7:
   size: 18427584
   object_id: 32221476-5c3d-4ec7-5869-44c989cc3077
   sha: 11f0462cc86bf85332399a2fa584d5bb46d0cb2a
-flannel-v0.10.0-linux-amd64.tar.gz:
-  size: 9706487
-  object_id: 36a8e66a-0b6c-4ca2-5f27-c277a7db90c5
-  sha: 9d19a56847d6aad207671a349eddd85de87ba560
-ipset/ipset_6.20.1-1_amd64.deb:
-  size: 34156
-  object_id: 5dfcce8f-366e-49f0-59e6-9e2d48178750
-  sha: 79eb9008d1a57b31bc748b49c18701ab3dd41108
-ipset/libipset3_6.20.1-1_amd64.deb:
-  size: 50812
-  object_id: 67efec49-e111-45fc-701d-7d55dbe66660
-  sha: e4daa1ac22b2775d1c334aa6fe055ca8dcccc185
 jq-linux64-1.5:
   size: 3027945
   object_id: 41eb1cd1-0377-4e08-5602-51e0af8b9b52

@@ -30,6 +30,7 @@ properties:
     description: The password for the admin account
   admission_controllers:
     description: list of admission controllers to enable
+    default: NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota
   allow_privileged:
     description: Allows privileged containers for the Kubernetes cluster
     default: false

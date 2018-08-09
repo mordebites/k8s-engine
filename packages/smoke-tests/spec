@@ -1,6 +1,0 @@
----
-name: smoke-tests
-dependencies:
-  - golang-1.10-linux
-files:
-  - smoke-tests/**/*
