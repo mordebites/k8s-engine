@@ -16,7 +16,7 @@ processes:
   executable: /var/vcap/packages/kubernetes/bin/kube-apiserver
   args:
     <% p('args').each do |arg| %>
-  - --<%= arg['name'] %>=<%= arg['value'] %><% end %>
+  - --<%= arg['flag'] %>=<%= arg['value'] %><% end %>
   - --anonymous-auth=<%= p('anonymous_auth') %>
   - --allow-privileged=<%= p('allow_privileged') %>
   - --apiserver-count=<%= link('kube-apiserver').instances.size %>
