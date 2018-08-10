@@ -15,6 +15,8 @@ processes:
 - name: kube-apiserver
   executable: /var/vcap/packages/kubernetes/bin/kube-apiserver
   args:
+    <% p('args').each do |arg| %>
+  - --<%= arg['name'] %>=<%= arg['value'] %><% end %>
   - --anonymous-auth=<%= p('anonymous_auth') %>
   - --allow-privileged=<%= p('allow_privileged') %>
   - --apiserver-count=<%= link('kube-apiserver').instances.size %>
@@ -25,7 +27,6 @@ processes:
   <% end %>
   - --kubelet-client-key=/var/vcap/jobs/kube-apiserver/config/kubelet-client-key.pem
   - --kubelet-client-certificate=/var/vcap/jobs/kube-apiserver/config/kubelet-client-cert.pem
-  - --enable-admission-plugins=<%= p('admission_controllers') %>
   - --disable-admission-plugins=PersistentVolumeLabel
   - --enable-bootstrap-token-auth
   - --enable-swagger-ui
@@ -37,7 +38,6 @@ processes:
   - --etcd-certfile=/var/vcap/jobs/kube-apiserver/config/etcd-client.crt
   - --etcd-keyfile=/var/vcap/jobs/kube-apiserver/config/etcd-client.key
   - --kubelet-https
-  - --secure-port=8443
   - --service-account-key-file=/var/vcap/jobs/kube-apiserver/config/service-account-public-key.pem
   - --service-account-lookup
   - --service-cluster-ip-range=<%= p('service-cluster-cidr') %>

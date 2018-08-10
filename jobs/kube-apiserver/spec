@@ -41,6 +41,8 @@ properties:
       `/healthz` or `/version`. This is also useful when configuring load
       balancer health checks against the TLS port.
     default: true
+  args:
+    description: Arguments to be passed to kube-apiserver
   deny_escalating_exec:
     description: Enable the `DenyEscalatingExec` admission controller.
     default: true
