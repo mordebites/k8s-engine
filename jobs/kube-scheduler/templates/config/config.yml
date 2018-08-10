@@ -7,7 +7,7 @@ clientConnection:
   contentType: application/vnd.kubernetes.protobuf
   kubeconfig: /var/vcap/jobs/kube-scheduler/config/kubeconfig
   qps: 50
-disablePreemption: false
+disablePreemption: true
 enableContentionProfiling: false
 enableProfiling: false
 failureDomains: kubernetes.io/hostname,failure-domain.beta.kubernetes.io/zone,failure-domain.beta.kubernetes.io/region
