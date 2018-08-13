@@ -4,6 +4,7 @@ name: kube-apiserver
 templates:
   bin/ensure_apiserver_healthy.erb: bin/ensure_apiserver_healthy
   bin/post-start.erb: bin/post-start
+  bin/pre-start.erb: bin/pre-start
   config/audit_policy.yml: config/audit_policy.yml
   config/bpm.yml.erb: config/bpm.yml
   config/cloud-provider.ini.erb: config/cloud-provider.ini
@@ -43,6 +44,8 @@ properties:
     default: true
   args:
     description: Arguments to be passed to kube-apiserver
+  pre-start-scripts:
+    description: Array of scripts to execute in order during pre-start
   deny_escalating_exec:
     description: Enable the `DenyEscalatingExec` admission controller.
     default: true
