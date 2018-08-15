@@ -15,9 +15,9 @@ processes:
 - name: kube-apiserver
   executable: /var/vcap/packages/kubernetes/bin/kube-apiserver
   args:
-    <% p('args').each do |arg| %>
-  - --<%= arg['flag'] %><% unless(arg['value'].nil?) %>=<%= arg['value'] %><% end %>
-    <% end %>
+    <% if_p('args') do |args| %>
+    <% args.each do |arg| %>
+  - --<%= arg['flag'] %><% unless(arg['value'].nil?) %>=<% if arg['value'].is_a?(Array) %><%= arg['value'].join(",") %><% else %><%= arg['value']%><% end %><% end %><% end %><% end %>
   - --apiserver-count=<%= link('kube-apiserver').instances.size %>
   <% if_link('cloud-provider') do |cloud_provider| %>
   - --cloud-provider=<%= cloud_provider.p('cloud-provider.type') %>

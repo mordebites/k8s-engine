@@ -31,54 +31,6 @@ describe 'kube-apiserver' do
     }
   end
 
-  it 'configures audit logging by default' do
-    rendered_kube_apiserver_bpm_yml = compiled_template(
-      'kube-apiserver',
-      'config/bpm.yml',
-      {},
-      link_spec
-    )
-
-    bpm_yml = YAML.safe_load(rendered_kube_apiserver_bpm_yml)
-    expect(bpm_yml['processes'][0]['args']).to include('--audit-log-path=/var/vcap/sys/log/kube-apiserver/audit.log')
-    expect(bpm_yml['processes'][0]['args']).to include('--audit-log-maxage=0')
-    expect(bpm_yml['processes'][0]['args']).to include('--audit-log-maxsize=0')
-    expect(bpm_yml['processes'][0]['args']).to include('--audit-log-maxbackup=0')
-    expect(bpm_yml['processes'][0]['args']).to include('--audit-policy-file=/var/vcap/jobs/kube-apiserver/config/audit_policy.yml')
-  end
-
-  it 'does not configure audit logging when enable audit logs is false' do
-    rendered_kube_apiserver_bpm_yml = compiled_template(
-      'kube-apiserver',
-      'config/bpm.yml',
-      { 'enable_audit_logs' => false },
-      link_spec
-    )
-
-    bpm_yml = YAML.safe_load(rendered_kube_apiserver_bpm_yml)
-    expect(bpm_yml['processes'][0]['args']).to_not include('--audit-log-path=/var/vcap/sys/log/kube-apiserver/audit.log')
-    expect(bpm_yml['processes'][0]['args']).to_not include('--audit-log-maxage=0')
-    expect(bpm_yml['processes'][0]['args']).to_not include('--audit-log-maxsize=0')
-    expect(bpm_yml['processes'][0]['args']).to_not include('--audit-log-maxbackup=0')
-    expect(bpm_yml['processes'][0]['args']).to_not include('--audit-policy-file=/var/vcap/jobs/kube-apiserver/config/audit_policy.yml')
-  end
-
-  it 'configures audit logging when enable audit logs is true' do
-    rendered_kube_apiserver_bpm_yml = compiled_template(
-      'kube-apiserver',
-      'config/bpm.yml',
-      { 'enable_audit_logs' => true },
-      link_spec
-    )
-
-    bpm_yml = YAML.safe_load(rendered_kube_apiserver_bpm_yml)
-    expect(bpm_yml['processes'][0]['args']).to include('--audit-log-path=/var/vcap/sys/log/kube-apiserver/audit.log')
-    expect(bpm_yml['processes'][0]['args']).to include('--audit-log-maxage=0')
-    expect(bpm_yml['processes'][0]['args']).to include('--audit-log-maxsize=0')
-    expect(bpm_yml['processes'][0]['args']).to include('--audit-log-maxbackup=0')
-    expect(bpm_yml['processes'][0]['args']).to include('--audit-policy-file=/var/vcap/jobs/kube-apiserver/config/audit_policy.yml')
-  end
-
   it 'has no http proxy when no proxy is defined' do
     rendered_kube_apiserver_bpm_yml = compiled_template(
       'kube-apiserver',
@@ -151,5 +103,33 @@ describe 'kube-apiserver' do
 
     bpm_yml = YAML.safe_load(rendered_kube_apiserver_bpm_yml)
     expect(bpm_yml['processes'][0]['args']).to include('--feature-gates=CustomFeature1=true,CustomFeature2=false')
+  end
+  it 'sets arbitrary flags if the property is defined' do
+    rendered_kube_apiserver_bpm_yml = compiled_template(
+      'kube-apiserver',
+      'config/bpm.yml',
+      {
+        'args' => [{
+          'flag' => 'k8s-flag',
+          'value' => 'k8s-flag-value'
+        },
+        {
+          'flag' => 'standalone-k8s-flag'
+        },
+        {
+          'flag' => 'array-k8s-flag',
+          'value' => [
+            'array-value-1',
+            'array-value-2'
+          ]
+        }]
+      },
+      link_spec
+    )
+
+    bpm_yml = YAML.safe_load(rendered_kube_apiserver_bpm_yml)
+    expect(bpm_yml['processes'][0]['args']).to include('--k8s-flag=k8s-flag-value')
+    expect(bpm_yml['processes'][0]['args']).to include('--standalone-k8s-flag')
+    expect(bpm_yml['processes'][0]['args']).to include('--array-k8s-flag=array-value-1,array-value-2')
   end
 end
